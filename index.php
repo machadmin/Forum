@@ -71,6 +71,10 @@ ob_start();
 						case "ara":
 						include("system/ara.php");
 						break;
+						
+						case "anasayfa":
+						include("pages/anasayfa.php");
+						break;
 					}
 					
 					?>
