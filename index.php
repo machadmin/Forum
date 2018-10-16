@@ -44,7 +44,7 @@ ob_start();
 					?>
 					<li><a href="?git=iletisim">İletişim</a></li>
 					</ul>
-					<form action="" method="post">
+					<form action="?git=ara" method="post">
 						<span><input type="text" name="ara" /><button type="submit">Ara</button></span>
 					</form>
 			</div>
@@ -65,7 +65,11 @@ ob_start();
 						break;
 						
 						case "kayit":
-						include("kayit.php");
+						include("system/kayit.php");
+						break;
+						
+						case "ara":
+						include("system/ara.php");
 						break;
 					}
 					
