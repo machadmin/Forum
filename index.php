@@ -26,15 +26,19 @@ ob_start();
 					
 					$sayfa = $db->prepare("select * from ana_sayfalar order by sayfa_id desc");
 					$sayfa->execute(array());
-					$s = $sayfa->fetcAll(PDO::FETCH_ASSOC);
+					$s = $sayfa->fetchALL(PDO::FETCH_ASSOC);
 					$x = $sayfa->rowCount();
 					
 					if($x){
 						foreach($s as $m){
-							echo '<li><a href="?git=ana_sayfalar&id='.$m["sayfa_id"].'">'.$m["sayfa_adi"]'</a></li>';
+							echo '<li><a href="?do=ana_sayfalar&id='.$m["sayfa_id"].'">'.$m["sayfa_adi"].'</a></li>';
 						}
 					}else{
 						// Birşey yok ise boş kal
+					}
+					
+					if(!$_SESSION){
+						echo '<li><a href="?git=kayit">Kayıt Ol</a></li>';
 					}
 					
 					?>
@@ -53,11 +57,15 @@ ob_start();
 					switch($git){
 						
 						case "iletisim":
-						include("iletisim.php");
+						include("pages/iletisim.php");
 						break;
 						
 						case "ana_sayfalar":
 						include("ana_sayfalar.php");
+						break;
+						
+						case "kayit":
+						include("kayit.php");
 						break;
 					}
 					
